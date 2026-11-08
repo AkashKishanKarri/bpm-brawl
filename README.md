@@ -7,16 +7,23 @@ Each player picks a real song, and their fighter throws a hit on every beat it h
 - 2 players or vs CPU, with player names
 - Hit list with Telugu, Bollywood and Punjabi tracks, plus search for any song (iTunes 30-second previews)
 - Both songs play at once: player 1 in the left ear, player 2 in the right, so play with earbuds
-- Save the round's mix at the end of a match
-- Real-time 3D stage (Three.js): LED wall, moving-head beams, lasers on drops, neon floor, bloom. Falls back to 2D if WebGL is unavailable
-- Full screen with F, and quality drops automatically on slower machines
+- Save the match's mix at the end
+- 3D concert stage with React Three Fiber: LED wall, moving-head beams, lasers on drops, neon floor
+- Post-processing: bloom, shockwaves on drops and knockouts, chromatic aberration on hits, scanlines, grain
+- Full screen with F; quality drops automatically on slower machines; falls back to a 2D stage without WebGL
+- The original single-file version is still at `/classic.html`
 
-## Play
-
-It's one file with no build step. Open `index.html` in Chrome, or serve the folder:
+## Run it
 
 ```sh
-python3 -m http.server 5190
+npm install
+npm run dev      # http://localhost:5173
+npm run build    # static site in dist/
 ```
 
-then go to http://localhost:5190.
+## How it's put together
+
+- `src/game/engine.js`: audio, beat and mass analysis, song library, combat, and the 2D fighter layer
+- `src/stage/`: the 3D stage (Three.js scene graph plus React Three Fiber and post-processing)
+- `src/ui/Screens.jsx`: title, song picker, VS, results, pause, as React components
+- The engine owns the clock and calls R3F's `advance()` each frame, so the 2D fighters and 3D stage stay in sync
