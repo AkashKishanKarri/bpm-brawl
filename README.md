@@ -8,6 +8,8 @@ Each player picks a real song, and their fighter throws a hit on every beat it h
 - Hit list with Telugu, Bollywood and Punjabi tracks, plus search for any song (iTunes 30-second previews)
 - Both songs play at once: player 1 in the left ear, player 2 in the right, so play with earbuds
 - Save the round's mix at the end of a match
+- Real-time 3D stage (Three.js): LED wall, moving-head beams, lasers on drops, neon floor, bloom. Falls back to 2D if WebGL is unavailable
+- Full screen with F, and quality drops automatically on slower machines
 
 ## Play
 
